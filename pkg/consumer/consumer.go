@@ -99,6 +99,9 @@ func (c Consumer) Start(ctx context.Context) error {
 					LifecycleActionToken:  &event.LifecycleActionToken,
 					LifecycleHookName:     &event.LifecycleHookName,
 				})
+				if err != nil {
+					log.Warnf("%s. Continuing ...", err.Error())
+				}
 
 			case <-ctx.Done():
 				return
