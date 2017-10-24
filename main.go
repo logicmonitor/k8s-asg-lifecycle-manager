@@ -35,12 +35,12 @@ func main() {
 		log.Fatal(err.Error())
 	}
 
-	// Invoke the nodeman
 	go func() {
-		nodeman.Watch()
+		// start the stats and health check server
+		s := stats.Server{}
+		s.Start()
 	}()
 
-	// start the stats and health check server
-	s := stats.Server{}
-	s.Start()
+	// Master of the Nodeman
+	nodeman.Watch()
 }
