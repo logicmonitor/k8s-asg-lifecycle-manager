@@ -92,6 +92,7 @@ func (c Consumer) Start(ctx context.Context) error {
 				cont := constants.AsgActionContinue
 
 				// tell the ASG it's ok to proceed with the action
+				log.Infof("Completing lifecycle action for instance %s", event.EC2InstanceID)
 				_, err = c.ASG.CompleteLifecycleAction(&autoscaling.CompleteLifecycleActionInput{
 					AutoScalingGroupName:  &event.AutoScalingGroupName,
 					LifecycleActionResult: &cont,
