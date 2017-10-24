@@ -7,11 +7,11 @@ import (
 
 	"github.com/aws/aws-sdk-go/service/autoscaling"
 	"github.com/aws/aws-sdk-go/service/ec2"
-	log "github.com/sirupsen/logrus"
 	"github.com/logicmonitor/k8s-asg-lifecycle-manager/pkg/constants"
 	"github.com/logicmonitor/k8s-asg-lifecycle-manager/pkg/node"
 	"github.com/logicmonitor/k8s-asg-lifecycle-manager/pkg/queue"
 	"github.com/logicmonitor/k8s-asg-lifecycle-manager/pkg/types"
+	log "github.com/sirupsen/logrus"
 )
 
 // Consumer a consumer worker thread

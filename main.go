@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	log "github.com/sirupsen/logrus"
 	"github.com/logicmonitor/k8s-asg-lifecycle-manager/pkg"
 	"github.com/logicmonitor/k8s-asg-lifecycle-manager/pkg/config"
 	"github.com/logicmonitor/k8s-asg-lifecycle-manager/pkg/stats"
+	log "github.com/sirupsen/logrus"
 )
 
 func main() {

@@ -5,9 +5,9 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/sqs"
-	log "github.com/sirupsen/logrus"
 	"github.com/logicmonitor/k8s-asg-lifecycle-manager/pkg/event"
 	"github.com/logicmonitor/k8s-asg-lifecycle-manager/pkg/types"
+	log "github.com/sirupsen/logrus"
 )
 
 // Message an SQS message wrapper
