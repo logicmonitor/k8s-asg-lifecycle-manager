@@ -2,7 +2,6 @@ package node
 
 import (
 	"fmt"
-	"regexp"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/ec2"
@@ -112,14 +111,7 @@ func (n Node) PrivateHostname() (string, error) {
 		return "", err
 	}
 
-	n.hostname = n.formatHostname(*i.PrivateDnsName)
+	n.hostname = *i.PrivateDnsName
 	log.Infof("Found instance private hostname %s", n.hostname)
 	return n.hostname, nil
-}
-
-func (n Node) formatHostname(hostname string) string {
-	// turn ip-10-35-120-96.us-west-1.ec2.internal
-	// into ip-10-35-120-96.us-west-1.compute.internal
-	var re = regexp.MustCompile(`(ec2)`)
-	return re.ReplaceAllString(hostname, `compute`)
 }
