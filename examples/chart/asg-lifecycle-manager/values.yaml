@@ -1,0 +1,11 @@
+replicaCount: 1
+image:
+  repository: logicmonitor/k8s-asg-lifecycle-manager
+  pullPolicy: Always
+  tag: latest
+
+service:
+  name: asg-lifecycle-manager
+  type: ClusterIP
+  port: 8080
+  debug: "true"

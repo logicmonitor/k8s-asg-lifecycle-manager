@@ -1,0 +1,51 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.name }}
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.name }}
+    spec:
+      imagePullSecrets:
+      - name: docker-registry-logicmonitor-net
+      serviceAccountName: {{ .Values.service.name }}
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        - name: NODEMAN_AWS_REGION
+          value: "{{ .Values.service.awsRegion }}"
+        - name: NODEMAN_AWS_SQS_QUEUE_URL
+          value: "{{ .Values.service.awsSqsQueueURL }}"
+        - name: NODEMAN_DEBUG
+          value: "{{ .Values.service.debug }}"
+        ports:
+        - containerPort: {{ .Values.service.port }}
+        readinessProbe:
+          httpGet:
+            path: /
+            port: {{ .Values.service.port }}
+          initialDelaySeconds: 15
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: {{ .Values.service.port }}
+          initialDelaySeconds: 15
+          periodSeconds: 5
+        resources:
+          requests:
+            memory: "250Mi"
+          limits:
+            memory: "250Mi"
