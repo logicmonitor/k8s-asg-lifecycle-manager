@@ -1,8 +1,3 @@
-<p align="center">
-  <a href="https://github.com/logicmonitor/k8s-asg-lifecycle-manager/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/logicmonitor/argus.svg?style=flat-square"></a>
-  <a href="https://github.com/logicmonitor/k8s-asg-lifecycle-manager/releases/latest"><img alt="GitHub (pre-)release" src="https://img.shields.io/github/release/logicmonitor/argus/all.svg?style=flat-square"></a>
-</p>
-
 > **Note:** ASG Lifecycle Manager is a community driven project. LogicMonitor support will not assist in any issues related to ASG Lifecycle Manager.
 
 ## ASG Lifecycle Manager is a tool for managing AWS auto scaling group events
