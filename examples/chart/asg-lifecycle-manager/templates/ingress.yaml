@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{.Values.service.name}}
+spec:
+  tls:
+  - hosts:
+    - {{.Values.service.name}}-{{ required "A valid .Values.service.ingressSuffix entry required!" .Values.service.ingressSuffix }}
+  rules:
+  - host: {{.Values.service.name}}-{{ required "A valid .Values.service.ingressSuffix entry required!" .Values.service.ingressSuffix }}
+    http:
+      paths:
+        - backend:
+            serviceName: {{.Values.service.name}}
+            servicePort: {{.Values.service.port}}
+          path: /
