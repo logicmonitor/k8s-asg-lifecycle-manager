@@ -17,7 +17,7 @@ the affected node(s). Once the pods are drained, the Lifecycle Manager will
 notify that auto scaling group that it may now proceed with the termination.
 
 ## ASG Lifecycle Manager Configuration Requirements
-- For this to have any value, you should be using an ** [EC2 Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroup.html) **
+- For this to have any value, you should be using an [EC2 Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroup.html)
 to manage at least some of your worker nodes
 - The auto scaling group must be configured to send [Auto Scaling Lifecycle Hooks](https://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html#sqs-notifications)
 to an [SQS](https://aws.amazon.com/documentation/sqs/).
