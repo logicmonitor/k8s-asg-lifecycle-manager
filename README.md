@@ -39,6 +39,7 @@ running the Lifecycle Manager gets scheduled for termination
 | NODEMAN_DEFAULT_VISIBILITY_TIMEOUT_SEC | int    | no       | 300     | SQS message visibility timeout for processing hooks                |
 | NODEMAN_ERROR_VISIBILITY_TIMEOUT_SEC   | int    | no       | 60      | SQS message visibility timeout for messages with processing errors |
 | NODEMAN_QUEUE_WAIT_TIME_SEC            | int    | no       | 5       | Delay between attempted SQS message retrievals                     |
+| SHORT_HOSTNAME            | bool    | no       | false       | Use the first part of the node's hostname delimited by '.'                     |
 
 **Note:** The Lifecycle Manager will let the AWS SDK transparently decide the
 most appropriate way to authenticate with AWS. For example, you may choose to
