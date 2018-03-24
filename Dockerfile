@@ -10,4 +10,5 @@ RUN curl -L "https://storage.googleapis.com/kubernetes-release/release/${KUBERNE
 FROM alpine:3.7
 COPY --from=build /kubectl /usr/local/bin/kubectl
 COPY --from=build /asg-lifecycle-manager /usr/local/bin/asg-lifecycle-manager
+RUN apk --no-cache add ca-certificates
 ENTRYPOINT [ "/usr/local/bin/asg-lifecycle-manager" ]
