@@ -61,9 +61,10 @@ func (c Consumer) Start(ctx context.Context) error {
 				log.Infof("%s", string(s))
 
 				// create node struct from the ec2 id in the parsed message
-				n := &node.Node{
-					EC2:           c.EC2,
-					EC2InstanceID: event.EC2InstanceID,
+				n, err := node.New(c.EC2, event.EC2InstanceID, c.Base.Config.ShortHostname)
+				if err != nil {
+					log.Error(err.Error())
+					continue
 				}
 
 				state, _ := n.State()
@@ -74,13 +75,13 @@ func (c Consumer) Start(ctx context.Context) error {
 						msg.Visibility()
 						continue
 					}
-
-					err = n.Delete()
-					if err != nil {
-						log.Info(err.Error())
-					}
 				} else {
 					log.Warnf("Instance %s has already been terminated. Deleting...", event.EC2InstanceID)
+				}
+
+				err = n.Delete()
+				if err != nil {
+					log.Info(err.Error())
 				}
 
 				err = msg.Delete()

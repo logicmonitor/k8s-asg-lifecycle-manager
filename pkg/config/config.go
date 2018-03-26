@@ -10,6 +10,7 @@ type Config struct {
 	AwsSqsQueueURL              string `envconfig:"AWS_SQS_QUEUE_URL" required:"true"`
 	ConsumerThreads             int    `envconfig:"CONSUMER_THREADS" default:"5"`
 	Debug                       bool   `envconfig:"DEBUG"`
+	ShortHostname               bool   `envconfig:"SHORT_HOSTNAME"`
 	DefaultVisibilityTimeoutSec int64  `envconfig:"DEFAULT_VISIBILITY_TIMEOUT_SEC" default:"300"`
 	ErrorVisibilityTimeoutSec   int64  `envconfig:"ERROR_VISIBILITY_TIMEOUT_SEC" default:"60"`
 	QueueWaitTimeSec            int64  `envconfig:"QUEUE_WAIT_TIME_SEC" default:"5"`
