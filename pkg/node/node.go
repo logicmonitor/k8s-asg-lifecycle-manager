@@ -111,6 +111,10 @@ func instance(ec2client *ec2.EC2, id string) (*ec2.Instance, error) {
 
 func name(i *ec2.Instance, short bool) (string, error) {
 	var name string
+	if i.PrivateDnsName == nil {
+		return "", fmt.Errorf("cannot determine node name, EC2 private DNS name is nil")
+	}
+
 	if short {
 		parts := strings.Split(*i.PrivateDnsName, ".")
 		name = parts[0]
