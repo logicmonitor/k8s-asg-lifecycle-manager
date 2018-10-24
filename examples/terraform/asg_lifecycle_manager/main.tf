@@ -128,5 +128,5 @@ data "aws_iam_policy_document" "asg_lifecycle_consumer_policy" {
 resource "aws_iam_role_policy" "asg_lifecycle_policy_consumer" {
   name    = "asg-lifecycle-consumer-role-policy"
   policy  = "${data.aws_iam_policy_document.asg_lifecycle_consumer_policy.json}"
-  role    = "${aws_iam_role.worker.id}"
+  role    = "${aws_iam_role.asg_lifecycle_role.id}"
 }
